@@ -86,9 +86,9 @@ Pinteresting::Application.configure do
   config.paperclip_defaults = {
     :storage => :s3,
     :s3_credentials => {
-      :bucket => ENV['iphinteresting'],
-      :access_key_id => ENV['AKIAI6GXT3ITJZUHBUBQ'],
-      :secret_access_key => ENV['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']
+      :bucket => ENV['AWS_BUCKET'],
+      :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
+      :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
     }
   }
 end
