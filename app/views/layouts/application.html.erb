@@ -1,21 +1,22 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Pinteresting</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-<%= render 'layouts/header' %>
+<%= link_to 'Back', pins_path %>
 
-<div class="container">
-  <% flash.each do |name, msg| %>
-      <%= content_tag(:div, msg, class: "alert alert-#{name}") %>
-  <% end %>
-  <%= yield %>
-</div>
+<div class="row">
+  <div class="col-md-offset-2 col-md-8">
+    <div class="panel panel-default">
+      <div class="panel-heading center">
+        <%= image_tag @pin.image.url(:medium) %>
+      </div>
+      <div class="panel-body">
+        <p><%= @pin.description %></p>
+        <p><strong><%= @pin.user.name if @pin.user %></strong></p>
 
-</body>
-</html>
+        <% if @pin.user == current_user %>
+            <%= link_to edit_pin_path(@pin) do %>
+                <span class="glyphicon glyphicon-edit"></span>
+                Edit
+            <% end %>
+        <% end %>
+      </div>
+    </div>
+
+  </div>
